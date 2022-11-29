@@ -39,7 +39,8 @@ namespace MauiRESTDemo
 
         public ICommand GetUserCommand => new Command(async () =>
         {
-            var url = $"{baseUrl}/users";
+            var url = $"{baseUrl}/users/25";
+            var response = await client.GetStringAsync(url);
         });
     }
 }
