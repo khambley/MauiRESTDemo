@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Text.Json;
 using System.Windows.Input;
 
@@ -41,6 +42,24 @@ namespace MauiRESTDemo
         {
             var url = $"{baseUrl}/users/25";
             var response = await client.GetStringAsync(url);
+        });
+
+        public ICommand AddUserCommand => new Command(async () =>
+        {
+            var url = $"{baseUrl}/users";
+            // you could create a form for the user to input their information and pass that into this method
+            var user = new User
+            {
+                CreatedAt = DateTime.Now,
+                Name = "Katherine Hambley",
+                Avatar = "https://fakeimg.pl/350x200/?text=MAUI"
+            };
+
+            string json = JsonSerializer.Serialize<User>(user, _serializerOptions);
+
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await client.PostAsync(url, content);
         });
     }
 }
