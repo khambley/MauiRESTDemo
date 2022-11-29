@@ -5,8 +5,8 @@
 
 <VerticalStackLayout HorizontalOptions="Center"
                      VerticalOptions="Center">
-    <Button Command="{Binding AddUserCommand}" Text="Add User" />
-
+    <Button Command="{Binding GetAllUsersCommand}" Text="Get All Users" />
+    <Button Command="{Binding GetUserCommand}" Text="Get User" />
 </VerticalStackLayout>
 
 </ContentPage>

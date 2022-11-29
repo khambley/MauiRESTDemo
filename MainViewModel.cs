@@ -18,7 +18,8 @@ namespace MauiRESTDemo
                 WriteIndented = true,
             };
         }
-        public ICommand AddUserCommand => new Command(async () =>
+
+        public ICommand GetAllUsersCommand => new Command(async () =>
         {
             var url = $"{baseUrl}/users";
 
@@ -34,6 +35,11 @@ namespace MauiRESTDemo
                 }
             }
             // add an else to capture http errors, i.e. 500, log it, and display a message.
+        });
+
+        public ICommand GetUserCommand => new Command(async () =>
+        {
+            var url = $"{baseUrl}/users";
         });
     }
 }
